@@ -1,0 +1,35 @@
+{
+  "user": {
+    "name": "John Doe",
+    "location": {
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    }
+  },
+  "businesses": [
+    {
+      "name": "Coffee Shop",
+      "description": "A cozy place to enjoy coffee and pastries.",
+      "location": {
+        "latitude": 40.7129,
+        "longitude": -74.0061
+      }
+    },
+    {
+      "name": "Bookstore",
+      "description": "Wide selection of books and magazines.",
+      "location": {
+        "latitude": 40.7130,
+        "longitude": -74.0062
+      }
+    },
+    {
+      "name": "Restaurant",
+      "description": "Delicious Italian cuisine.",
+      "location": {
+        "latitude": 40.7131,
+        "longitude": -74.0063
+      }
+    }
+  ]
+}
