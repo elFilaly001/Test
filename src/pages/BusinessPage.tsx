@@ -4,6 +4,7 @@ import BusinessCardDetailModal from "../components/modals/BusinessCardDetailModa
 import DistanceFilter from "../components/filters/DistenceFilter";
 import CityFilter from "../components/filters/CityFilter";
 import DomainFilter from "../components/filters/DomainFilter";
+import SearchInput from "../components/filters/SearchInput";
 import { calculateDistance } from "../services/CalculateDistence";
 import data from "../../data.json";
 
@@ -27,6 +28,7 @@ function BusinessPage() {
   const [selectedDistance, setSelectedDistance] = useState<number | null>(null);
   const [selectedCity, setSelectedCity] = useState<string | null>(null);
   const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   useEffect(() => {
     const userLat = data.user.location.latitude;
@@ -52,15 +54,23 @@ function BusinessPage() {
     const distanceMatch = !selectedDistance || (business.distance && business.distance <= selectedDistance);
     const cityMatch = !selectedCity || business.city === selectedCity;
     const domainMatch = !selectedDomain || business.domain === selectedDomain;
-    return distanceMatch && cityMatch && domainMatch;
+    const searchMatch = !searchTerm ||
+      business.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.domain.toLowerCase().includes(searchTerm.toLowerCase());
+    return distanceMatch && cityMatch && domainMatch && searchMatch;
   });
 
   return (
     <div>
-      <div className="filters-container mb-6">
-        <DistanceFilter selectedDistance={selectedDistance} onDistanceChange={setSelectedDistance} />
-        <CityFilter selectedCity={selectedCity} onCityChange={setSelectedCity} />
-        <DomainFilter selectedDomain={selectedDomain} onDomainChange={setSelectedDomain} />
+      <div className="bg-white shadow-sm border border-gray-200 rounded-xl p-6 mb-6">
+        <div className="flex flex-wrap gap-4 items-center">
+          <SearchInput searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+          <DistanceFilter selectedDistance={selectedDistance} onDistanceChange={setSelectedDistance} />
+          <CityFilter selectedCity={selectedCity} onCityChange={setSelectedCity} />
+          <DomainFilter selectedDomain={selectedDomain} onDomainChange={setSelectedDomain} />
+        </div>
       </div>
       <div className="business-list flex flex-wrap justify-center ">
         {filteredBusinesses.map((business, index) => (
