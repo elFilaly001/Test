@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import BusinessCard from "../components/BusinessCard";
 import BusinessCardDetailModal from "../components/modals/BusinessCardDetailModal";
+import DistanceFilter from "../components/filters/DistenceFilter";
+import CityFilter from "../components/filters/CityFilter";
+import DomainFilter from "../components/filters/DomainFilter";
+import SearchInput from "../components/filters/SearchInput";
 import { calculateDistance } from "../services/CalculateDistence";
 import data from "../../data.json";
 
@@ -21,6 +25,10 @@ function BusinessPage() {
   const [businesses, setBusinesses] = useState<Business[]>([]);
   const [selectedBusiness, setSelectedBusiness] = useState<Business | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedDistance, setSelectedDistance] = useState<number | null>(null);
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [selectedDomain, setSelectedDomain] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>('');
 
   useEffect(() => {
     const userLat = data.user.location.latitude;
@@ -42,11 +50,30 @@ function BusinessPage() {
     setIsModalOpen(false);
   };
 
+  const filteredBusinesses = businesses.filter(business => {
+    const distanceMatch = !selectedDistance || (business.distance && business.distance <= selectedDistance);
+    const cityMatch = !selectedCity || business.city === selectedCity;
+    const domainMatch = !selectedDomain || business.domain === selectedDomain;
+    const searchMatch = !searchTerm ||
+      business.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      business.domain.toLowerCase().includes(searchTerm.toLowerCase());
+    return distanceMatch && cityMatch && domainMatch && searchMatch;
+  });
+
   return (
     <div>
-      <h1>Business Page</h1>
+      <div className="bg-white shadow-sm border border-gray-200 rounded-xl p-6 mb-6">
+        <div className="flex flex-wrap gap-4 items-center">
+          <SearchInput searchTerm={searchTerm} onSearchChange={setSearchTerm} />
+          <DistanceFilter selectedDistance={selectedDistance} onDistanceChange={setSelectedDistance} />
+          <CityFilter selectedCity={selectedCity} onCityChange={setSelectedCity} />
+          <DomainFilter selectedDomain={selectedDomain} onDomainChange={setSelectedDomain} />
+        </div>
+      </div>
       <div className="business-list flex flex-wrap justify-center ">
-        {businesses.map((business, index) => (
+        {filteredBusinesses.map((business, index) => (
           <BusinessCard key={index} business={business} onClick={() => openModal(business)} />
         ))}
       </div>
