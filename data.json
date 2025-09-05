@@ -10,26 +10,35 @@
     {
       "name": "Coffee Shop",
       "description": "A cozy place to enjoy coffee and pastries.",
+      "image": "https://picsum.photos/150/150?random=1",
       "location": {
         "latitude": 40.7129,
         "longitude": -74.0061
-      }
+      },
+      "city": "New York",
+      "domain": "Food"
     },
     {
       "name": "Bookstore",
       "description": "Wide selection of books and magazines.",
+      "image": "https://picsum.photos/150/150?random=2",
       "location": {
         "latitude": 40.7130,
         "longitude": -74.0062
-      }
+      },
+      "city": "New York",
+      "domain": "Retail"
     },
     {
       "name": "Restaurant",
       "description": "Delicious Italian cuisine.",
+      "image": "https://picsum.photos/150/150?random=3",
       "location": {
         "latitude": 40.7131,
         "longitude": -74.0063
-      }
+      },
+      "city": "New York",
+      "domain": "Food"
     }
   ]
 }
