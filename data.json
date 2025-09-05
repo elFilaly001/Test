@@ -3,7 +3,7 @@
     "name": "John Doe",
     "location": {
       "latitude": 40.7128,
-      "longitude": -74.0060
+      "longitude": -74.006
     }
   },
   "businesses": [
@@ -23,7 +23,7 @@
       "description": "Wide selection of books and magazines.",
       "image": "https://picsum.photos/150/150?random=2",
       "location": {
-        "latitude": 40.7130,
+        "latitude": 40.713,
         "longitude": -74.0062
       },
       "city": "New York",
@@ -112,7 +112,7 @@
       "image": "https://picsum.photos/150/150?random=10",
       "location": {
         "latitude": 33.4484,
-        "longitude": -112.0740
+        "longitude": -112.074
       },
       "city": "Phoenix",
       "domain": "Retail"
@@ -123,7 +123,7 @@
       "image": "https://picsum.photos/150/150?random=11",
       "location": {
         "latitude": 32.7767,
-        "longitude": -96.7970
+        "longitude": -96.797
       },
       "city": "Dallas",
       "domain": "Food"
@@ -138,6 +138,30 @@
       },
       "city": "San Francisco",
       "domain": "Retail"
+    },
+    {
+      "id": "49d4",
+      "name": "teeeeeeeeeeeest",
+      "description": "dadwada",
+      "image": "https://picsum.photos/150/150?random=414",
+      "location": {
+        "latitude": 27.87186228447578,
+        "longitude": 98.79738931130288
+      },
+      "city": "Casablanca",
+      "domain": "Arts"
+    },
+    {
+      "id": "8c3d",
+      "name": "ffff",
+      "description": "ffff",
+      "image": "https://picsum.photos/150/150?random=183",
+      "location": {
+        "latitude": -0.0831103593224185,
+        "longitude": -83.0121775209418
+      },
+      "city": "efef",
+      "domain": "Technology"
     }
   ]
 }
