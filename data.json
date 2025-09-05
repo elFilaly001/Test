@@ -14,7 +14,9 @@
       "location": {
         "latitude": 40.7129,
         "longitude": -74.0061
-      }
+      },
+      "city": "New York",
+      "domain": "Food"
     },
     {
       "name": "Bookstore",
@@ -23,7 +25,9 @@
       "location": {
         "latitude": 40.7130,
         "longitude": -74.0062
-      }
+      },
+      "city": "New York",
+      "domain": "Retail"
     },
     {
       "name": "Restaurant",
@@ -32,7 +36,9 @@
       "location": {
         "latitude": 40.7131,
         "longitude": -74.0063
-      }
+      },
+      "city": "New York",
+      "domain": "Food"
     }
   ]
 }
