@@ -15,11 +15,12 @@ interface Business {
 
 interface BusinessCardProps {
   business: Business;
+  onClick: () => void;
 }
 
-function BusinessCard({ business }: BusinessCardProps) {
+function BusinessCard({ business, onClick }: BusinessCardProps) {
   return (
-    <div className="min-w-[25%]">
+    <div className="min-w-[25%] cursor-pointer" onClick={onClick}>
       <div className="business-card bg-gradient-to-br from-white to-gray-50 shadow-lg rounded-xl p-6 m-4 border border-gray-200 hover:shadow-2xl hover:scale-105 transition-all duration-300 transform">
         <div className="flex flex-col items-center text-center">
           <img src={business.image} alt={business.name} className="w-32 h-32 object-cover rounded-full mb-4 border-4 border-blue-200 shadow-md" />
